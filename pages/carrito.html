@@ -2,10 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<link rel="icon" href="./img/logo-navegador2.png" />
+		<link rel="icon" href="../img/logo-navegador2.png" />
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
@@ -16,22 +15,21 @@
 			integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="./css/style.css" />
-		<title>Inicio | LITMORE</title>
+		<link rel="stylesheet" href="../css/style.css" />
+		<title>Carrito | LITMORE</title>
 	</head>
 	<body>
 		<header class="header">
 			<div class="logo">
-				<a href="./index.html" class="logo-link">
-                  <img src="./img/logo.png" class="logo-img" alt="logo de LITMORE" />
+				<a href="../index.html" class="logo-link">
+					<img src="../img/logo.png" class="logo-img" alt="" />
 				</a>
 			</div>
 
 			<div class="buscardor">
 				<div class="input-container">
 					<input
-						id="barra-buscador"
-						type="search"
+						type="text"
 						name="text"
 						class="input"
 						placeholder="buscar..."
@@ -89,7 +87,7 @@
 			</div>
 
 			<div class="carrito">
-				<a href="./pages/carrito.html" class="carrito-link">
+				<a href="./carrito.html" class="carrito-link">
 					<i class="bi bi-cart"></i>
 					<p class="carrito-text">Mi Carrito</p>
 					<p id="num-carrito" class="carrito-numero">0</p>
@@ -97,35 +95,48 @@
 			</div>
 		</header>
 
-		<div class="filtro-container">
-			<div class="Btns-filtro filtro-marca">
-				<button id="todos" class="btn-filtro btn-categorias active">
-					Todos Los Productos
-				</button>
-
-				<button id="nike" class="btn-filtro btn-categorias">Nike</button>
-
-				<button id="adidas" class="btn-filtro btn-categorias">Adidas</button>
-
-				<button id="puma" class="btn-filtro btn-categorias">Puma</button>
-
-				<button id="converse" class="btn-filtro btn-categorias">
-					Converse
-				</button>
-
-				<button id="under-armour" class="btn-filtro btn-categorias">
-					Under Armour
-				</button>
-			</div>
-		</div>
-
 		<main class="main">
-			<div
-				id="contenedor-productos"
-				class="cartas-container contenido-buscador"
-			>
-				<!-- Contenedor de productos -->
-			</div>
+			<section class="menu-inicio">
+				<h2 class="menu-title">Mi Carrito</h2>
+				<p class="menu-menu">
+					<a href="../index.html" class="menu-index-link menu-link"
+						><i class="bi bi-arrow-bar-left"></i>Home</a
+					>
+					|
+					<a href="./carrito.html" class="menu-carrito-link menu-link"
+						>Mi Carrito</a
+					>
+				</p>
+			</section>
+
+			<section class="mostrar-carrito">
+				<p id="carrito-text-vacio" class="carrito-vacio content-carrito-vacio">
+					Carrito vacio. <i class="bi bi-cart-x"></i>
+				</p>
+
+				<div id="conteniedor-de-carrito" class="carrito-container">
+					<!-- Contenido de carrito -->
+				</div>
+
+				<div id="carrito-pago" class="">
+					<div class="carrito-container-compra">
+						<button id="btn-vaciar-carrito" class="carrito-cont-vaciar btn-carrito">
+							<i class="bi bi-cart-x"></i>VACIAR CARRITO
+						</button>
+						<div class="carrito-cont-total-pagar">
+							<div class="carrito-cont-total">
+								<p class="carrito-total">Total:</p>
+								<p id="total-carrito" class="carrito-total cart-total"></p>
+							</div>
+							<button  id="btn-comprar-carrito" class="carrito-cont-pagar">COMPRAR</button>
+						</div>
+					</div>
+				</div>
+
+				<p id="carrito-compra-realizada" class="content-carrito-vacio">
+					Gracias por la compra. ¡Lo esperamos pronto!
+				</p>
+			</section>
 		</main>
 
 		<footer class="footer">
@@ -137,8 +148,9 @@
 			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 			crossorigin="anonymous"
 		></script>
-		<script src="./js/productos.js"></script>
-		<script src="./js/main.js"></script>
-		<script src="./js/carrito.js"></script>
+
+		<script src="../js/productos.js"></script>
+		<script src="../js/main.js"></script>
+		<script src="../js/productos.js"></script>
 	</body>
 </html>
