@@ -80,7 +80,7 @@ function renovarBtnEliminarProducto() {
 
 function eliminarDeCarrito(e) {
 	const idBoton = e.currentTarget.id;
-	const index = productosEnLS.findIndex((producto) => producto.id === idBoton);
+	const index = productosEnLS.findIndex(producto => producto.id === idBoton);
 
 	productosEnLS.splice(index, 1);
 	cargarProductosCarrito();
