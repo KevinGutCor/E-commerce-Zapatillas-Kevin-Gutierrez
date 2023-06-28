@@ -56,9 +56,8 @@ function buscarProductos() {
 
 		const mostrarFiltrado = productos.filter(
 			(producto) =>
-				producto.categoria.id.toLowerCase().startsWith(buscarText) ||
-				producto.categoria.genero.toLowerCase().startsWith(buscarText) ||
-				producto.titulo.toLowerCase().startsWith(buscarText)
+				producto.categoria.genero.toLowerCase().includes(buscarText) ||
+				producto.titulo.toLowerCase().includes(buscarText)
 		);
 
 		mostrarFiltrado.length ? cargarProductos(mostrarFiltrado) : noResultado();
