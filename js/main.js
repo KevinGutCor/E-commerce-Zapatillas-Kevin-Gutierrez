@@ -1,4 +1,3 @@
-
 // Treamos botones de html
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const btnCategorias = document.querySelectorAll(".btn-categorias");
@@ -13,10 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Sección mostrar los productos
 function cargarProductos(filtroElegido) {
-
 	contenedorProductos.innerHTML = "";
 
-	filtroElegido.forEach(producto => {
+	filtroElegido.forEach((producto) => {
 		const div = document.createElement("div");
 		div.classList.add("cartas");
 		div.innerHTML = `
@@ -73,6 +71,7 @@ function limpiarHTML() {
 // Si no hay resultados de busqueda mostrara un msj
 function noResultado() {
 	const noResultado = document.createElement("div");
+	noResultado.classList.add("no-resultado")
 	noResultado.textContent = "No hay resultados de busqueda";
 	contenedorProductos.appendChild(noResultado);
 }
@@ -107,9 +106,9 @@ let productosDeCarrito;
 let productosEnLS = localStorage.getItem("productos-de-carrito");
 
 if (productosEnLS) {
-	productosDeCarrito= JSON.parse(productosEnLS);
+	productosDeCarrito = JSON.parse(productosEnLS);
 	actualizarNumCarrito();
-}else{
+} else {
 	productosDeCarrito = [];
 }
 
@@ -131,7 +130,10 @@ function agregarACarrito(e) {
 
 	actualizarNumCarrito();
 
-	localStorage.setItem("productos-de-carrito", JSON.stringify(productosDeCarrito));
+	localStorage.setItem(
+		"productos-de-carrito",
+		JSON.stringify(productosDeCarrito)
+	);
 }
 
 // Actualizar numero de productos en el carrito
