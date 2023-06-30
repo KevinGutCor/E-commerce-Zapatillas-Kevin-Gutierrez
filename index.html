@@ -21,13 +21,14 @@
 	</head>
 	<body>
 		<header class="header">
+
 			<div class="logo">
 				<a href="./index.html" class="logo-link">
 					<img src="./img/logo.png" class="logo-img" alt="logo de LITMORE" />
 				</a>
 			</div>
 
-			<div class="menu-mobile" id="menu-mobile">
+			<div class="menu-mobile" id="btn-abrir-menu">
 				<i class="bi bi-list"></i>
 			</div>
 
@@ -92,19 +93,13 @@
 				</div>
 			</div>
 
-			<div class="carrito carrito-desktop">
-				<a href="./pages/carrito.html" class="carrito-link">
-					<i class="bi bi-cart"></i>
-					<p class="carrito-text">Mi Carrito</p>
-					<p id="num-carrito" class="carrito-numero">0</p>
-				</a>
-			</div>
 		</header>
 
-		<div class="filtro-container">
-			<div class="Btns-filtro filtro-marca">
+		<div id="menu-mobile"  class="filtro-container filtro-container">
+			<div class="Btns-filtro filtro-marca header-mobile-btn">
+				<div  id="btn-cerrar-menu" class="btn-cerrar-menu"><i class="bi bi-x-circle-fill btn-cerrar"></i></div>
 				<button id="todos" class="btn-filtro btn-categorias active">
-					Todos Los Productos
+					Productos
 				</button>
 
 				<button id="nike" class="btn-filtro btn-categorias">Nike</button>
@@ -117,9 +112,13 @@
 					Converse
 				</button>
 
-				<button id="under-armour" class="btn-filtro btn-categorias">
-					Under Armour
-				</button>
+				<div class="carrito ">
+					<a href="./pages/carrito.html" class="carrito-link">
+						<i class="bi bi-cart"></i>
+						<p class="carrito-text">Mi Carrito</p>
+						<p id="num-carrito" class="carrito-numero">0</p>
+					</a>
+				</div>
 			</div>
 		</div>
 
@@ -167,8 +166,10 @@
 			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 			crossorigin="anonymous"
 		></script>
-		<script src="./js/productos.js"></script>
+
 		<script src="./js/main.js"></script>
+		<script src="./js/menu.js"></script>
+		<script src="./js/productos.js"></script>
 		<script src="js/carrito.js"></script>
 	</body>
 </html>
