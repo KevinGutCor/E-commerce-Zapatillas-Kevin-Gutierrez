@@ -12,7 +12,12 @@ const contenidoCarritoCompra = document.querySelector(
 let btnEliminarProductos = document.querySelectorAll(".btn-elimiar-producto");
 const btnVaciar = document.querySelector("#btn-vaciar-carrito");
 const contTotal = document.querySelector("#total-carrito");
-const contComprar = document.querySelector("#btn-comprar-carrito");
+const btnComprar = document.querySelector("#btn-comprar-carrito");
+// Formulario de compra
+const formularioDeCompra = document.querySelector("#formulario-de-compra");
+const cancelarFormulario = document.querySelector("#btn-cancelar-compra");
+const finalizarFormulario = document.querySelector("#btn-finalizar-compra");
+const formularioFinal = document.querySelector("#formulario-final");
 
 function cargarProductosCarrito() {
 	if (productosEnLS && productosEnLS.length > 0) {
@@ -66,6 +71,7 @@ function cargarProductosCarrito() {
 		contenidoCarritoPago.classList.add("disabled");
 		contenidoCarritoCompra.classList.add("disabled");
 	}
+
 	renovarBtnEliminarProducto();
 	actualizarTotal();
 }
@@ -85,7 +91,7 @@ function eliminarDeCarrito(e) {
 		duration: 2000,
 		close: true,
 		gravity: "top", // `top` or `bottom`
-		position: "right", // `left`, `center` or `right`
+		position: "left", // `left`, `center` or `right`
 		stopOnFocus: true, // Prevents dismissing of toast on hover
 		style: {
 			background: "linear-gradient(to left, #040404, #605b5b",
@@ -108,12 +114,15 @@ function vaciarCarrito() {
 	Swal.fire({
 		title: "¿Esta seguro?",
 		icon: "question",
-		iconColor: "#050505",
+		iconColor: "#626262",
 		html: "Se le eliminaran todos los productos",
 		showCancelButton: true,
 		focusConfirm: false,
+		confirmButtonColor: "#f72c2c",
+		cancelButtonColor: "#2954ff",
 		confirmButtonText: "Si",
 		cancelButtonText: "No",
+		allowOutsideClick: true,
 	}).then((result) => {
 		if (result.isConfirmed) {
 			productosEnLS.length = 0;
@@ -132,7 +141,51 @@ function actualizarTotal() {
 	);
 	contTotal.innerText = `$${totalCulculado}`;
 }
-contComprar.addEventListener("click", compraCarrito);
+
+btnComprar.addEventListener("click", (e) => {
+	e.preventDefault();
+	formularioDeCompra.classList.add("formulario-visible");
+});
+
+cancelarFormulario.addEventListener("click", (e) => {
+	e.preventDefault();
+	formularioDeCompra.classList.remove("formulario-visible");
+});
+
+// finalizar compra
+formularioFinal.addEventListener("submit", finalDeCompra);
+
+function finalDeCompra(e) {
+	e.preventDefault();
+
+	const nombre = document.querySelector("#nombre").value;
+	const apellido = document.querySelector("#apellido").value;
+	const email = document.querySelector("#email").value;
+	const telefono = document.querySelector("#telefono").value;
+	const cuidad = document.querySelector("#inputCity").value;
+	const calle = document.querySelector("#calle").value;
+
+	Swal.fire({
+		position: "center-center",
+		icon: "success",
+		title: "Compra Finalizada",
+		showConfirmButton: false,
+		timer: 1500,
+	});
+
+	const compraRealizadaDatos = document.querySelector(
+		"#carrito-compra-realizada"
+	);
+	compraRealizadaDatos.innerHTML = `
+	<p> Gracias por la compra "${nombre}" </p>
+	<p>El pedido llegara en un plazo de 24hs a 48hs a "${cuidad}, ${calle}". </p>
+	<p>Nos comunicaremos mediarte "${email}" o "${telefono}". </p>
+	`;
+
+	formularioDeCompra.classList.remove("formulario-visible");
+	compraCarrito();
+}
+
 function compraCarrito() {
 	productosEnLS.length = 0;
 	localStorage.setItem("productos-de-carrito", JSON.stringify(productosEnLS));

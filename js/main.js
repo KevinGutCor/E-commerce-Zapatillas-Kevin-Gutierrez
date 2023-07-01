@@ -127,7 +127,7 @@ function agregarACarrito(e) {
 		duration: 3000,
 		close: true,
 		gravity: "top", // `top` or `bottom`
-		position: "right", // `left`, `center` or `right`
+		position: "left", // `left`, `center` or `right`
 		stopOnFocus: true, // Prevents dismissing of toast on hover
 		style: {
 			background: "linear-gradient(to left, #040404, #605b5b",
