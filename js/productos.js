@@ -31,7 +31,7 @@ const productos = [
 		titulo: "Nike Air Vapormax",
 		imagen:
 			"https://www.moov.com.ar/dw/image/v2/BDTF_PRD/on/demandware.static/-/Sites-365-dabra-catalog/default/dw258ce489/products/NIDM0573-101/NIDM0573-101-1.JPG?sw=400&sh=400",
-		precio: 109999,
+		precio: 10999,
 		categoria: {
 			genero:"Unisex",
 			id: "nike",

@@ -433,19 +433,14 @@ hr {
 	font-weight: 600;
 }
 
-.carrito-producto-btn-vaciar {
-	width: 5rem;
-	display: flex;
-	justify-content: center;
-}
 .btn-cerrar {
 	display: none;
 }
 /* BTN VACIAR CARRITO */
 .button {
-	width: 40px;
+	width: 80px;
 	height: 40px;
-	border-radius: 50%;
+	border-radius: 50px;
 	background-color: rgb(20, 20, 20);
 	border: none;
 	font-weight: 400;
@@ -469,7 +464,7 @@ hr {
 }
 
 .button:hover {
-	width: 100px;
+	width: 80px;
 	border-radius: 50px;
 	transition-duration: 0.3s;
 	background-color: rgb(255, 69, 69);
@@ -586,9 +581,6 @@ hr {
 	}
 	.logo-link {
 		margin-left: 2rem;
-	}
-	.carrito-link {
-		/* margin-right: 2rem; */
 	}
 	.input-container {
 		width: 300px;

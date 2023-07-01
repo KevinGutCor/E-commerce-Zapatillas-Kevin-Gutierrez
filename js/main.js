@@ -1,3 +1,12 @@
+let productos = [];
+
+fetch("./js/productos.json")
+	.then((response) => response.json())
+	.then((json) => {
+		productos = json;
+		cargarProductos(productos);
+	});
+
 // Treamos botones de html
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const btnCategorias = document.querySelectorAll(".btn-categorias");
@@ -71,7 +80,7 @@ function limpiarHTML() {
 // Si no hay resultados de busqueda mostrara un msj
 function noResultado() {
 	const noResultado = document.createElement("div");
-	noResultado.classList.add("no-resultado")
+	noResultado.classList.add("no-resultado");
 	noResultado.textContent = "No hay resultados de busqueda";
 	contenedorProductos.appendChild(noResultado);
 }
@@ -113,6 +122,19 @@ if (productosEnLS) {
 }
 
 function agregarACarrito(e) {
+	Toastify({
+		text: "Producto agregado",
+		duration: 3000,
+		close: true,
+		gravity: "top", // `top` or `bottom`
+		position: "right", // `left`, `center` or `right`
+		stopOnFocus: true, // Prevents dismissing of toast on hover
+		style: {
+			background: "linear-gradient(to left, #040404, #605b5b",
+		},
+		onClick: function () {}, // Callback after click
+	}).showToast();
+
 	const idBoton = e.currentTarget.id;
 	const productoAgregado = productos.find(
 		(producto) => producto.id === idBoton

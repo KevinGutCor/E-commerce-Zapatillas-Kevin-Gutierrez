@@ -1,4 +1,3 @@
-
 let productosEnLS = localStorage.getItem("productos-de-carrito");
 productosEnLS = JSON.parse(productosEnLS);
 
@@ -6,7 +5,9 @@ productosEnLS = JSON.parse(productosEnLS);
 const contenidoCarritoVacio = document.querySelector("#carrito-text-vacio");
 const contenedorDeProductos = document.querySelector("#conteniedor-de-carrito");
 const contenidoCarritoPago = document.querySelector("#carrito-pago");
-const contenidoCarritoCompra = document.querySelector("#carrito-compra-realizada");
+const contenidoCarritoCompra = document.querySelector(
+	"#carrito-compra-realizada"
+);
 //Btns del carrito
 let btnEliminarProductos = document.querySelectorAll(".btn-elimiar-producto");
 const btnVaciar = document.querySelector("#btn-vaciar-carrito");
@@ -79,8 +80,21 @@ function renovarBtnEliminarProducto() {
 }
 
 function eliminarDeCarrito(e) {
+	Toastify({
+		text: "Producto Eliminado",
+		duration: 2000,
+		close: true,
+		gravity: "top", // `top` or `bottom`
+		position: "right", // `left`, `center` or `right`
+		stopOnFocus: true, // Prevents dismissing of toast on hover
+		style: {
+			background: "linear-gradient(to left, #040404, #605b5b",
+		},
+		onClick: function () {}, // Callback after click
+	}).showToast();
+
 	const idBoton = e.currentTarget.id;
-	const index = productosEnLS.findIndex(producto => producto.id === idBoton);
+	const index = productosEnLS.findIndex((producto) => producto.id === idBoton);
 
 	productosEnLS.splice(index, 1);
 	cargarProductosCarrito();
@@ -91,9 +105,25 @@ function eliminarDeCarrito(e) {
 btnVaciar.addEventListener("click", vaciarCarrito);
 
 function vaciarCarrito() {
-	productosEnLS.length = 0;
-	localStorage.setItem("productos-de-carrito", JSON.stringify(productosEnLS));
-	cargarProductosCarrito();
+	Swal.fire({
+		title: "¿Esta seguro?",
+		icon: "question",
+		iconColor: "#050505",
+		html: "Se le eliminaran todos los productos",
+		showCancelButton: true,
+		focusConfirm: false,
+		confirmButtonText: "Si",
+		cancelButtonText: "No",
+	}).then((result) => {
+		if (result.isConfirmed) {
+			productosEnLS.length = 0;
+			localStorage.setItem(
+				"productos-de-carrito",
+				JSON.stringify(productosEnLS)
+			);
+			cargarProductosCarrito();
+		}
+	});
 }
 function actualizarTotal() {
 	const totalCulculado = productosEnLS.reduce(
